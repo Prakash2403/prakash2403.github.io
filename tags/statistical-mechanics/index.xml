@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Statistical Mechanics on Information Theory | Statistical Mechanics | Machine Learning</title>
+    <link>https://prakash2403.github.io/tags/statistical-mechanics/</link>
+    <description>Recent content in Statistical Mechanics on Information Theory | Statistical Mechanics | Machine Learning</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Jun 2019 17:40:21 +0530</lastBuildDate>
+    
+	<atom:link href="https://prakash2403.github.io/tags/statistical-mechanics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Entropy</title>
+      <link>https://prakash2403.github.io/post/entropy/</link>
+      <pubDate>Sun, 02 Jun 2019 17:40:21 +0530</pubDate>
+      
+      <guid>https://prakash2403.github.io/post/entropy/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

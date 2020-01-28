@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>Learning Partial Differential Equations From Data Using Neural Networks // Prakash Rai</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.57.2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Prakash" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://prakash2403.github.io/css/main.min.61bb32028587f24ca28522d8d197970c7ef33284e5fffb45a75fcbbb2dbc4dcb.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Learning Partial Differential Equations From Data Using Neural Networks"/>
+<meta name="twitter:description" content="Given a set of dictionary functiWons and noisy data."/>
+
+    <meta property="og:title" content="Learning Partial Differential Equations From Data Using Neural Networks" />
+<meta property="og:description" content="Given a set of dictionary functiWons and noisy data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://prakash2403.github.io/post/learning-partial-differential-equations-from-data-using-neural-networks/" />
+<meta property="article:published_time" content="2020-01-21T06:13:50+05:30" />
+<meta property="article:modified_time" content="2020-01-21T06:13:50+05:30" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://prakash2403.github.io/"><img class="app-header-avatar" src="/me/profile.jpg" alt="Prakash" /></a>
+      <h1>Prakash Rai</h1>
+      <p>Lazy | Math Nerd | Potterhead | Data Scientist</p>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/Prakash2403" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://www.linkedin.com/in/prakash-rai-2403/" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin">
+  <title>linkedin</title>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Learning Partial Differential Equations From Data Using Neural Networks</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Jan 21, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          7 min read
+        </div><div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag">
+  <title>tag</title>
+  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line>
+</svg>
+          <a class="tag" href="https://prakash2403.github.io/tags/ai/">AI</a><a class="tag" href="https://prakash2403.github.io/tags/mathematics/">Mathematics</a><a class="tag" href="https://prakash2403.github.io/tags/7-min-reads/">7-Min-Reads</a></div></div>
+    </header>
+    <div class="post-content">
+      <p><strong>Link to paper:</strong> <a href="https://arxiv.org/pdf/1910.10262.pdf">Learning Partial Differential Equations From Data Using Neural Networks</a></p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<p>A <a href="https://en.wikipedia.org/wiki/Partial_differential_equation#Introduction">Partial Differential Equation</a> relates a function with its partial derivatives. It can be represented as follows:</p>
+
+<p><span  class="math">\[F(\textbf{x}, f(\textbf{x}),  \frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}...\frac{\partial ^t f}{\partial x_n^t}, \frac{\partial ^2 f}{\partial x_1 \partial x_2}, ...) = 0\]</span></p>
+
+<p>where <span  class="math">\(\textbf{x} \medspace \epsilon \medspace \R^n, t \medspace \epsilon \medspace \Z\)</span>.</p>
+
+<p>If one restricts <span  class="math">\(F\)</span> to be linear, then above equation can be represented as</p>
+
+<p><span  class="math">\[ \textbf{D} \phi = \sum_{i=0}^{k}\phi_iD_i = 0 \]</span></p>
+
+<p>where <span  class="math">\(\textbf{D}\)</span> is pre-specified set of functions(aka Dictionary functions) on which you expect the PDE to depend and <span  class="math">\(\phi\)</span> is vector of linear coefficients. It is evident that <span  class="math">\(\phi \medspace \epsilon \medspace N(\textbf{D})\)</span> where <span  class="math">\(N(\textbf{D})\)</span> is <a href="https://math.stackexchange.com/questions/21131/physical-meaning-of-the-null-space-of-a-matrix">null space</a> of <span  class="math">\(\textbf{D}\)</span>.</p>
+
+<h5 id="key-points-to-note">Key points to note</h5>
+
+<ul>
+<li>Dictionary functions: Set of functions on which you expect your PDE to depend</li>
+<li>Null Space of a matrix is spanned by it's <a href="https://en.wikipedia.org/wiki/Singular_value_decomposition#Singular_values,_singular_vectors,_and_their_relation_to_the_SVD">right singular vectors</a> whose associated <a href="https://en.wikipedia.org/wiki/Singular_value_decomposition#Singular_values,_singular_vectors,_and_their_relation_to_the_SVD">singular value</a> is <span  class="math">\(0\)</span>.</li>
+</ul>
+
+<h3 id="available-data">Available Data</h3>
+
+<p>Three things are available to us</p>
+
+<p><span  class="math">\[\textbf{X}, f(\textbf{X}), \textbf{D}\]</span></p>
+
+<p>where,</p>
+
+<p><span  class="math">\(\textbf{X}=(x_1, x_2, x_3......x_n)\)</span> and <span  class="math">\(x_i \medspace \epsilon \medspace \R^d \)</span></p>
+
+<p><span  class="math">\(f(\textbf{X})=(f(x_1), f(x_2), f(x_3)......f(x_n))\)</span> and <span  class="math">\( f(x_i) \medspace \epsilon \medspace \R\)</span></p>
+
+<p><span  class="math">\(\textbf{D} = (D_1, D_2, D_3.........D_k)\)</span> ; Dictionary functions; <span  class="math">\(D_i\)</span> is either some function of <span  class="math">\(f\)</span> or relates <span  class="math">\(f\)</span> with its partial derivate(s).</p>
+
+<h3 id="output-we-want">Output we want</h3>
+
+<ul>
+<li>An approximation of <span  class="math">\(f\)</span></li>
+<li>Underlying PDE as linear combination of dictionary functions</li>
+</ul>
+
+<h3 id="proposed-architecture">Proposed Architecture</h3>
+
+<p>Since, Artificial Neural Networks are <a href="http://neuralnetworksanddeeplearning.com/chap4.html">universal function approximators(under certain assumptions, of course)</a>, one can use them to approximate a given function
+<span  class="math">\(f\)</span>. Let's call the approximated function <span  class="math">\(\bar f\)</span></p>
+
+<p>Only issue with this approach is, it overfits if data is noisy. And here is where PDE shines.</p>
+
+<h3 id="how-pdes-will-be-used-for-parameter-estimation">How PDEs will be used for parameter estimation</h3>
+
+<p>We add a regularizer term which adds a penalty if the function generated by neural network isn't a solution to PDE (We'll discuss the penalization aspect later).</p>
+
+<p>But we still haven't figured out how to come up with <span  class="math">\(\phi\)</span>. So lets focus on that.</p>
+
+<h3 id="finding-phi">FInding <span  class="math">\(\phi\)</span></h3>
+
+<p>The approach is as follows:</p>
+
+<ol>
+<li>Sample <span  class="math">\(k\)</span> elements from <span  class="math">\(\textbf{X}\)</span>. Call the set of points <span  class="math">\(\bar \textbf{X}\)</span></li>
+<li>Evaluate dictionary functions <span  class="math">\(D\)</span> on <span  class="math">\(\bar \textbf{X}\)</span>. This operation will be represented as <span  class="math">\(D(\bar f, \bar \textbf{X})\)</span>. Explained more in furthur paragraphs.</li>
+<li>If there were <span  class="math">\(L\)</span> dictionary functions, then step (2) will yield a matrix of dimension <span  class="math">\(k \times L\)</span>. Let's call the matrix <span  class="math">\(\bar K\)</span></li>
+<li>Using <em>some technique</em>, find null vectors of <span  class="math">\(\bar K\)</span>. Note that any null vector of <span  class="math">\(\bar K\)</span> is capable of being <span  class="math">\(\phi\)</span>.</li>
+</ol>
+
+<p>But there is a small catch here. In step 2, we are evaluating dictionary functions on sampled data points. This has one issue: We don't know exact representation of <span  class="math">\(f\)</span>. We are relying on our neural network to give us an approximate representation of <span  class="math">\(f\)</span> and while neural networks are theoretically capable of approximating a function(again, under few assumptions) to arbitrary accuracy, they can't produce the exact representation. So, the matrix <span  class="math">\(\bar K\)</span> has some <em>implicit</em> error which can't be removed. This also means that <span  class="math">\(\bar K\)</span> may be a <a href="https://en.wikipedia.org/wiki/Rank_(linear_algebra)">full-rank matrix</a>(because of independent <em>implicit</em> error). Hence, we may not find any null vector in step (4).</p>
+
+<p>But, if one assumes that every dictionary function is <a href="https://en.wikipedia.org/wiki/Distributive_property">distributive</a> and <span  class="math">\(|f-\bar f| < \epsilon\)</span>, where <span  class="math">\(\epsilon\)</span> is an arbitrary positive number, then one can easily prove that <span  class="math">\(\bar K\)</span> will approximate <span  class="math">\(D(f, \bar \textbf{X})\)</span>, where <span  class="math">\(D(f, \bar \textbf{X})\)</span> denotes dictionary function being evaluated on <span  class="math">\(\bar \textbf{X}\)</span>, using the exact representation of <span  class="math">\(f\)</span>. Thus, the right singular vector associated with smallest singular of <span  class="math">\(\bar K\)</span> will be an approximation for <span  class="math">\(\phi\)</span> (Remember, singular values are always non-negative, and null space is spanned by right singular vectors whose associated singular value is <span  class="math">\(0\)</span>. So, if <span  class="math">\(\bar K\)</span> is an approximation to <span  class="math">\(D(f, \bar \textbf{X})\)</span>, then right singular vector corresponding to singular value closest to <span  class="math">\(0\)</span>(i.e. minimum singular value) will be an approximation to <span  class="math">\(\phi\)</span>)</p>
+
+<p>Finally, we know what to find and why to find it. We just don't know how. There are several methods of finding smallest singular value and corresponding right singular vector for a given matrix. Authors of this paper choose to go with <a href="https://en.wikipedia.org/wiki/Min-max_theorem#Min-max_principle_for_singular_values"><em>Min-Max theorem for Singular values</em></a>. Based on quality and quantity of your data, you may choose to go with some other method.</p>
+
+<h3 id="loss-function">Loss function</h3>
+
+<h4 id="intuition-behind-loss-function">Intuition behind loss function</h4>
+
+<p>We want our approximated function to fit the data as well as underlying PDEs. And since it's Machine Learning, it won't be complete without <a href="https://en.wikipedia.org/wiki/Occam%27s_razor"><em>Occam's Razor</em></a> :). Hence, we can say that</p>
+
+<p><span  class="math">\[L_{net} = G(L_{model}, L_{PDE}, L_{complexity})\]</span></p>
+
+<p>Assuming data points(<span  class="math">\(\textbf{X}\)</span>) are I.I.D. and coming from a Guassian distribution, <span  class="math">\(L_{model}\)</span> can simply be MSE. In most practical cases, people tend to ignore the Gaussian distribution prior assumption(never understood why they do it. Humans are complicated, aren't they?). Assuming <span  class="math">\(\textbf{n}\)</span> data points:</p>
+
+<p><span  class="math">\[L_{model} = \sqrt{\dfrac{1}{2n}\sum_{i=0}^n(||f(x_i) - \bar f(x_i)||_{_2}^{^2}})\]</span></p>
+
+<p><span  class="math">\(L_{PDE}\)</span> is also simple. Assuming you get <span  class="math">\(\phi^*\)</span> as your coefficients for underlying PDE, <span  class="math">\(||D(\bar f, \bar \textbf{X})\cdot\phi^*||_{_2}^{^2}\)</span>  should give <span  class="math">\(L_{PDE}\)</span>. Why? Because if <span  class="math">\(\bar f\)</span> approximates <span  class="math">\(f\)</span>, then <span  class="math">\(D(\bar f, \bar \textbf{X})\cdot\phi^* \)</span> should be <span  class="math">\(0\)</span>.(Remember, <span  class="math">\(\phi\)</span> lies in null space of <span  class="math">\(D\)</span>)</p>
+
+<p><span  class="math">\[L_{PDE} = ||D(\bar f, \bar \textbf{X})\cdot\phi^*||_{_2}^{^2}\]</span></p>
+
+<p>Coming to <span  class="math">\(L_{complexity}\)</span>, I would say it depends on data and <a href="https://en.wikipedia.org/wiki/Inductive_bias">inductive bias</a>. Here, authors assume that you want your underlying PDE to be sparse i.e. it should be dependent on as few dictionary functions as possible. Hence, they applied <span  class="math">\(L_1\)</span> regularization on <span  class="math">\(\phi\)</span>.</p>
+
+<p><span  class="math">\[L_{complexity}=||\phi||_{_1}\]</span></p>
+
+<p>But based on your priors, you can always choose(or invent) a suitable regularizer.</p>
+
+<h4 id="formulating-the-loss-function">Formulating the loss function</h4>
+
+<p>Now, let's think of representing loss function in terms of three losses described above. We would want PDE to intervene when model is overfitting. Generally, model overfits when data is noisy i.e. it contains outliers. Outliers cause a spike in loss value, thus increasing the <strong>mean</strong> (remember, <span  class="math">\(L_{model}\)</span> is MSE) and consequently forcing model to <em>perfectly</em> fit the outlier. However, in the process of fitting every outlier, the function which model learns becomes less and less smooth. And that means underlying PDE will have to be dependent on more and more dictionary functions.</p>
+
+<p>But that can't happen. Why? Because of <span  class="math">\(L_1\)</span> regularization applied on <span  class="math">\(\phi\)</span>. (<em>The Occam's razor finally strikes!!!!!</em>).</p>
+
+<p>In order to make all of this happen, we must ensure that whenever <span  class="math">\(L_{model}\)</span> is high, <span  class="math">\(L_{PDE}\)</span> and <span  class="math">\(L_{complexity}\)</span>  dominate the loss function. <span  class="math">\(L_{complexity}\)</span> will force the underlying PDE to be dependent on fewer dictionary functions and <span  class="math">\(L_{PDE}\)</span> will force the model to learn a smooth function.</p>
+
+<p>Also, when normal data points(i.e. data points which are not outliers) are encountered, <span  class="math">\(L_{model}\)</span> should dominate the loss function.</p>
+
+<p>Summarizing above reasoning:</p>
+
+<ul>
+<li>When <span  class="math">\(L_{model}\)</span> is high, we want <span  class="math">\(L_{PDE}\)</span> and <span  class="math">\(L_{complexity}\)</span> to dominate the net loss.</li>
+<li>When <span  class="math">\(L_{model}\)</span> is low, we want <span  class="math">\(L_{model}\)</span> to dominate the net loss.</li>
+</ul>
+
+<p>A simple function satisying above conditions is:</p>
+
+<p><span  class="math">\[L_{net} = G(L_{model}, L_{PDE}, L_{complexity}) = \lambda_{model}L_{model}(1 + \lambda_{PDE}L_{PDE} + \lambda_{complexity}L_{complexity})\]</span></p>
+
+<p>where, <span  class="math">\(\lambda_{model}\)</span>, <span  class="math">\(\lambda_{PDE}\)</span> and <span  class="math">\(\lambda_{complexity}\)</span> are <a href="https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/meaning-of-lagrange-multiplier">Lagrange multipliers</a>.</p>
+
+<h3 id="results">Results</h3>
+
+<p>Results claimed by the authors seem to be decent. Error computation is as follows:</p>
+
+<ol>
+<li><a href="http://mathworld.wolfram.com/NormalizedVector.html">Normalise</a> original PDE coefficients(<span  class="math">\(\phi\)</span>) and predicted PDE coefficients(<span  class="math">\(\phi^*\)</span>),</li>
+<li>Compute their dot product,</li>
+<li>Subtract it from 1</li>
+<li>Take square root of the difference.<br></li>
+</ol>
+
+<p>Obviously, because of normalization, dot product will be in between -1 and 1. Hence, in step 3, the difference will never be negative, so loss will always
+be real.</p>
+
+<p>However, the authors haven't reported the MSE values on train and test data. That will be a good thing to try.</p>
+
+<p>Refer to the paper for exact values.</p>
+
+<h3 id="my-two-cents">My two cents</h3>
+
+<p>This paper proposes a new way of tackling overfitting. It assumes that as more and more noisy data points are encountered by the model, overfitting will decrease the smoothness of function being approximated by it. This assumption does make sense and is true for all practical cases I've seen till now. In that sense it provides an implicit solution for overfitting, which eliminates the need of <em>overfitting mitigation methods</em> like cross validation, manually checking results on validation data, etc.</p>
+
+<p>However, there are two clear disadvantages</p>
+
+<ul>
+<li>Pre-specifying dictionary functions</li>
+<li>Assumption that PDE is <strong>linear</strong> combination of dictionary function.</li>
+</ul>
+
+<p>Because of reasons mentioned above, this method is useless for domains where we don't have any credible information of nature of underlying PDE.</p>
+
+<p>However, this method will be very useful in domains like physics and finance, where we already have a set of potential dictionary functions.</p>
+
+<h3 id="up-next">Up Next</h3>
+
+<ul>
+<li>Simulate their work and extend it for some other PDEs.</li>
+<li>Report MSE on train and test set.</li>
+<li>Improve hyperparameter search by using <a href="https://arxiv.org/pdf/1810.05934.pdf">ASHA</a>, <a href="https://deepmind.com/blog/article/population-based-training-neural-networks">PBT</a> or other techniques.</li>
+</ul>
+
+<hr>
+
+<h4 id="have-any-issuescomplaintssuggestions-feel-free-to-mail-me-at-rishurai24gmailcommailtorishurai24gmailcom-or-open-an-issue-herehttpsgithubcomprakash2403blogsrcissues">Have any issues/complaints/suggestions, feel free to mail me at <a href="mailto:rishurai24@gmail.com">rishurai24@gmail.com</a>, or open an issue <a href="https://github.com/Prakash2403/blog-src/issues">here</a></h4>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+  
+</html>

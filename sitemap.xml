@@ -3,18 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://prakash2403.github.io/categories/</loc>
-    <priority>0</priority>
+    <loc>https://prakash2403.github.io/tags/7-min-reads/</loc>
+    <lastmod>2020-01-21T06:13:50+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://prakash2403.github.io/tags/ai/</loc>
+    <lastmod>2020-01-21T06:13:50+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://prakash2403.github.io/post/learning-partial-differential-equations-from-data-using-neural-networks/</loc>
+    <lastmod>2020-01-21T06:13:50+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://prakash2403.github.io/tags/mathematics/</loc>
+    <lastmod>2020-01-21T06:13:50+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://prakash2403.github.io/post/</loc>
+    <lastmod>2020-01-21T06:13:50+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://prakash2403.github.io/</loc>
-    <priority>0</priority>
+    <lastmod>2020-01-21T06:13:50+05:30</lastmod>
   </url>
   
   <url>
     <loc>https://prakash2403.github.io/tags/</loc>
-    <priority>0</priority>
+    <lastmod>2020-01-21T06:13:50+05:30</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://prakash2403.github.io/categories/</loc>
   </url>
   
 </urlset>
